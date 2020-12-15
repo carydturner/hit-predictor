@@ -1,3 +1,28 @@
+##############################################################
+#                           HEAD                             #
+##############################################################
+
+# File Name: hit_predictor.R
+# Author: Cary Dean Turner
+#
+# Description: This file contains a logistic regression classification model which can
+# be used to predict whether or not a song will be a hit, based on song attributes derived
+# from Spotify's Web API. The data used spans 5 decades, from the 1960s to the 2010s, and
+# each decade has been analyzed separately and has its own classifier model. The motivating
+# question behind this project was not only whether popularity of music can be predicted 
+# based on qualities of the song, but also whether or not songs have become any more
+# predictable or formulaic over time. According to our analysis, it does appear (perhaps 
+# not surprisingly), that the trend suggests music is becoming more formulaic and predictable
+# with time.
+# 
+# Methods: For each decade of song data, we trained 20 models, 10 using L1 regularization
+# and 10 using L2 regularization, each with 10 different values of alpha. In our validation
+# phase we picked the best performing model out of the 20 (measured by AUC) and used the
+# single best performing model from each decade to be tested on the corresponding test dataset.
+# ------------------------------------------------------------------------------------
+
+
+# Load relevant libraries
 library(tidyverse)
 library(ROCR)
 library(glmnet)
