@@ -1121,38 +1121,5 @@ nrow(tens_mold_breakers) / nrow(thousands)
 
 
 ####################################################################
-########################### STOP HERE ##############################
+#                              FOOT                                #
 ####################################################################
-
-
-#### PART 2: Linear regression to predict popularity ####
-
-pop_data <- read_csv("~/Desktop/spotify-audio-features_popularity/SpotifyAudioFeaturesApril2019.csv")
-
-lr_model <- lm(popularity ~ 1 + danceability + energy + loudness + mode +
-                 speechiness + acousticness + instrumentalness + liveness + valence +
-                 tempo + duration_ms, pop_data)
-
-coef(lr_model)
-
-coefficient_vec <- list('danceability', 'energy', 'loudness', 'mode', 'speechiness', 'acousticness',
-                  'instrumentalness', 'liveness', 'valence', 'tempo', 'duration_ms')
-correlations <- c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-
-for (i in 1:11) {
-  correlations[i] <- cor(pop_data$coefficient_vec[i], pop_data$popularity)
-}
-
-
-ggplot(pop_data) +
-  geom_smooth(aes(x = danceability, y = popularity), color = 'red') +
-  geom_smooth(aes(x = energy, y = popularity))
-
-ggplot(pop_data) +
-  geom_smooth(aes(x = duration_ms, y = popularity))
-
-
-
-
-
-
